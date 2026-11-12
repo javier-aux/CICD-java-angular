@@ -1,0 +1,32 @@
+services:
+  bd:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: emp
+    networks:
+      - red789
+      
+  backend:
+    build: ./emp_backend
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://bd:3306/emp?useSSL=false$allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8080"
+    networks:
+      - red789
+    depends_on:
+      - bd
+  frontend:
+    build: ./employee frontend final
+    ports:
+      - "4200:4200"
+    networks:
+      - red789
+      
+networks:
+  red789:
