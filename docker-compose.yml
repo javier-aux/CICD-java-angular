@@ -12,7 +12,7 @@ services:
     build: ./emp_backend
     restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://bd:3306/emp?useSSL=false$allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://bd:3306/emp?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1234
     ports:
@@ -27,6 +27,6 @@ services:
       - "4200:4200"
     networks:
       - red789
-      
+
 networks:
   red789:
